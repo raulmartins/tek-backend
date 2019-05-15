@@ -1,5 +1,21 @@
 const express = require('express')
+const routes = require('./routes')
 
-const routes = express.Router()
+class App {
+  constructor () {
+    this.express = express()
+    this.isDev = process.env.NODE_ENV !== 'production'
 
-module.exports = routes
+    this.middleware()
+    this.routes()
+  }
+
+  middleware () {
+    this.express.use(express.json())
+  }
+  routes () {
+    this.express.use(routes)
+  }
+}
+
+module.exports = new App().express
