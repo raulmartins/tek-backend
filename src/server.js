@@ -3,7 +3,7 @@ const express = require('express')
 const routes = require('./routes')
 const mongoose = require('mongoose')
 const databaseConfig = require('./config/database')
-
+const cors = require('cors')
 class App {
   constructor () {
     this.express = express()
@@ -24,6 +24,7 @@ class App {
     this.express.use(express.json())
   }
   routes () {
+    this.express.use(cors())
     this.express.use(routes)
   }
 }
