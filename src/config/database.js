@@ -1,3 +1,4 @@
 module.exports = {
-  uri: 'mongodb://localhost:27017/marketplace'
+  uri:
+    'mongodb+srv://oministack:oministack@cluster0-rr3l9.mongodb.net/TEK?retryWrites=true'
 }

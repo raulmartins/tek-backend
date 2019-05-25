@@ -1,4 +1,4 @@
 module.exports = {
-  secret: 'marketplace',
+  secret: 'TEK',
   ttl: 86400
 }

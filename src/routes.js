@@ -6,11 +6,13 @@ const routes = express.Router()
 
 routes.post('/users', controllers.UserController.store)
 routes.post('/sessions', controllers.SessionController.store)
+
 routes.use(AuthMiddleware)
-routes.get('/ads', controllers.AdController.index)
-routes.get('/ads/:id', controllers.AdController.show)
-routes.post('/ads', controllers.AdController.store)
-routes.put('/ads/:id', controllers.AdController.update)
-routes.delete('/ads/:id', controllers.AdController.destroy)
+
+routes.get('/project', controllers.ProjectController.index)
+routes.get('/project/:id', controllers.ProjectController.show)
+routes.post('/project', controllers.ProjectController.store)
+routes.put('/project/:id', controllers.ProjectController.update)
+routes.delete('/project/:id', controllers.ProjectController.destroy)
 
 module.exports = routes
