@@ -40,7 +40,10 @@ class ProjectController {
   }
 
   async ideal (req, res) {
-    const response = await api.post('values', req.body)
+    const response = await api.post('values', {
+      ...req.body,
+      DevPl: req.body.DevMid
+    })
 
     if (!response) {
       return res.status(404).json()
