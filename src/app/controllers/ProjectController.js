@@ -39,6 +39,16 @@ class ProjectController {
     return res.send(project)
   }
 
+  async ideal (req, res) {
+    const response = await api.post('values', req.body)
+
+    if (!response) {
+      return res.status(404).json()
+    }
+
+    return res.json(Number(response.data))
+  }
+
   async health (req, res) {
     const project = await Project.findById(req.params.id)
     if (!project.spentHours.length) return res.json(status.VERY_GOOD)
