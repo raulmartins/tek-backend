@@ -23,6 +23,9 @@ const Project = mongoose.Schema({
     type: String,
     required: true
   },
+  spentHours: {
+    type: [Number]
+  },
   DevJr: {
     type: Number,
     required: true
