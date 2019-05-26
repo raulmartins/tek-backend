@@ -40,16 +40,24 @@ class ProjectController {
   }
 
   async health (req, res) {
-    const response = await api.post('values', req.body)
     const project = await Project.findById(req.params.id)
     if (!project.spentHours.length) return res.json(status.VERY_GOOD)
-    const suggestHours = Number(response.data)
+    const { DevJr, DevMid, DevSr, soldWork } = project
+    const response = await api.post('values', {
+      DevJr,
+      DevPl: DevMid,
+      DevSr,
+      HorasVendidas: soldWork
+    })
+
     if (!response) {
       return res.status(404).json({ error: 'Machine Learn not found' })
     }
-    if (!project) {
-      return res.status(404).json({ error: 'Project Not Found' })
-    }
+
+    const suggestHours = Number(response.data)
+
+    if (!project) return res.status(404).json({ error: 'Project Not Found' })
+
     const { duration } = project
     const weekIdealHours = suggestHours / duration
     const idealCurrentWork = weekIdealHours * project.spentHours.length

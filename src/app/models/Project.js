@@ -19,6 +19,10 @@ const Project = mongoose.Schema({
     type: Number,
     required: true
   },
+  soldWork: {
+    type: Number,
+    required: true
+  },
   projectManager: {
     type: String,
     required: true
